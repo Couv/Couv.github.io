@@ -1,209 +1,53 @@
-<html><head>
-    <title>[][][]X[][][]</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8">
-    <style type="text/css">
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    #email.unloaded {
-        font-style: italic;
-    }
-    html {
-        overflow-x: hidden;
-        padding: 0.5em;
-    }
-    body {
-        font-family: "Open Sans", "Verdana", "Arial", "sans-serif";
-        font-size: 81.25%;
-        max-width: 40em;
-        margin: 0 auto;
-        padding-bottom: 4em;
-        color: #222;
-        overflow-x: hidden;
-    }
-    h1 { 
-        font-size: 2.5em; 
-        margin: 0.5em 0;
-    }
-    h2 { 
-        font-size: 1.3em; 
-        margin: 2em 0em 0.8em 0;
-        width: 100%;
-        border-bottom: 1px solid #ccc;
-    }
-    h3 {
-        font-size: 1.1em;
-        margin: 0.3em 0 0.1em 0;
-    }
-    h4 { 
-        font-size: 1em;
-    }
-    dt {
-        min-width: 12em;
-        float: left;
-    }
-    li {
-        /* Explicitly declare for nested lists */
-        list-style: disc;
-        margin-left: 1.5em; 
-    }
-    .block-list > li {
-        border-top: 1px solid #ccc;
-        padding: 0.8em 0;
-        list-style-type: none;
-        margin-left: 0;
-    }
-    .block-list > li:first-child {
-        border-top: 0;
-    }
-    .project-time {
-        display: block;
-        float: right;
-        font-weight: normal;
-        font-size: 0.8em;
-        color: #aaa;
-    }
-    a, a:visited {
-        color: inherit;
-        text-decoration: underline;
-        text-decoration-style: dotted;
-    }
-    a:hover, a:focus {
-        text-decoration: none;
-    }
-    a.anchor {
-        opacity: 0;
-        transition: opacity linear 0.1s;
-        text-decoration: none;
-        padding: 0 1em;
-    }
-    :hover > a.anchor {
-        opacity: 1;
-    }
-    </style><style type="text/css"></style>
+<html manifest="snake.appcache"><head>
+<!--
+
+JavaScript Snake
+By Patrick Gillespie
+http://patorjk.com/games/snake
+
+Soure code is available here: https://github.com/patorjk/JavaScript-Snake
+
+--> 
+    <title>JavaScript Snake</title>
+    <link rel="stylesheet" type="text/css" href="./css/snake.css"><style type="text/css"></style>
+    
+<script src="http://www.google-analytics.com/ga.js" async="" type="text/javascript"></script><script type="text/javascript">
+if (navigator.onLine && window.location.hostname === 'patorjk.com') {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-3312460-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+}
+</script>
 </head>
-<body>
-<h1>Yawkat</h1>
-<p>
-    My name is <b>Jonas Konrad</b>. 
-    I grew up in <a href="https://en.wikipedia.org/wiki/M%C3%BCnster" target="_blank">Münster, NRW, Germany</a> and now live in <a href="https://en.wikipedia.org/wiki/Erlangen" target="_blank">Erlangen, Bavaria, Germany</a>. 
-    I am currently 17 years old and studying computer science at the <a href="https://www.fau.de/" target="_blank">Friedrich-Alexander Universität Erlangen-Nürnberg</a>.
-</p>
-<dl>
-    <dt>e-mail</dt>
-    <dd>
-        <span id="email" class="unloaded">Click to show</span>
-        <script type="text/javascript">
-        document.getElementById("email").addEventListener("click", function(evt) {
-            var p1 = "m@aka";
-            var p2 = "eyw.t";
-            var text = "";
-            for (var i = 0; i < 5; i++) {
-                text += p1[i] + p2[i];
-            }
-            evt.target.classList.remove("unloaded");
-            evt.target.innerHTML = text;
-        });
-        </script>
-    </dd>
-    <dt>Minecraft username</dt>
-    <dd>yawkat</dd>
-    <dt>IRC</dt>
-    <dd><a href="http://webchat.freenode.net?channels=%23yawkat" target="_blank">freenode/#yawkat</a></dd>
-</dl>
+<body style="background-color: rgb(252, 84, 84);">
+    <div style="left: 0px; top: 0px; width: 1915px; height: 711px;" class="snake-game-container" id="game-area" tabindex="0">
+    <div style="z-index: 10000;" class="snake-pause-screen"><div style="padding:10px;">[Paused]<p>Press [space] to unpause.</p></div></div><div style="left: 20px; top: 20px; width: 1860px; height: 640px;" class="snake-playing-field" id="playingField"></div><div style="top: 671px; width: 450px; left: 733px; display: block;" class="snake-panel-component"><a href="http://patorjk.com/blog/software/" class="snake-link">more patorjk.com apps</a> - <a href="https://github.com/patorjk/JavaScript-Snake" class="snake-link">source code</a></div><div style="top: 671px; left: 1795px;" class="snake-panel-component">Length: 1</div><div style="z-index: 1000;" class="snake-welcome-dialog" id="sbWelcome0"><div>JavaScript Snake<p></p>Use the <strong>arrow keys</strong> on your keyboard to play the game. On Windows, press F11 to play in Full Screen mode.<p></p></div><button>Play Game</button></div><div class="snake-try-again-dialog" id="sbTryAgain0"><div>JavaScript Snake<p></p>You died :(.<p></p></div><button>Play Again?</button></div><div style="left: 40px; top: 40px; width: 20px; height: 20px;" class="snake-snakebody-block snake-snakebody-alive"></div><div style="left: -1000px; top: -1000px; width: 20px; height: 20px;" class="snake-snakebody-block"></div><div style="left: -1000px; top: -1000px; width: 20px; height: 20px;" class="snake-snakebody-block"></div><div style="left: -1000px; top: -1000px; width: 20px; height: 20px;" class="snake-snakebody-block"></div><div style="left: -1000px; top: -1000px; width: 20px; height: 20px;" class="snake-snakebody-block"></div><div style="left: -1000px; top: -1000px; width: 20px; height: 20px;" class="snake-snakebody-block"></div><div style="left: -1000px; top: -1000px; width: 20px; height: 20px;" class="snake-snakebody-block"></div><div style="left: -1000px; top: -1000px; width: 20px; height: 20px;" class="snake-snakebody-block"></div><div style="left: -1000px; top: -1000px; width: 20px; height: 20px;" class="snake-snakebody-block"></div><div style="left: -1000px; top: -1000px; width: 20px; height: 20px;" class="snake-snakebody-block"></div><div style="left: -1000px; top: -1000px; width: 20px; height: 20px;" class="snake-snakebody-block"></div><div style="width: 20px; height: 20px; left: 620px; top: 440px;" class="snake-food-block" id="snake-food-0"></div></div>
+    
+    <div class="snake-try-again-dialog">
 
-<h2>Links <a href="#links" id="links" class="anchor">¶</a></h2>
-<ul>
-    <li><a href="https://github.com/yawkat" target="_blank">GitHub</a></li>
-    <li><a href="http://ci.yawk.at" target="_blank">Jenkins</a></li>
-</ul>
+    </div>
+    <script type="text/javascript" src="./js/snake.js"></script>
+    <script type="text/javascript">
+    var mySnakeBoard = new SNAKE.Board(  {
+                                            boardContainer: "game-area",
+                                            fullScreen: true
+                                        });    
+    </script>
 
-<h2>Accumulated Experience <a href="#accumulated_experience" id="accumulated_experience" class="anchor">¶</a></h2>
-<ul>
-<li>Minecraft (Spigot, Bukkit, BungeeCord, ProtocolLib)</li>
-<li>Databases (MySQL, PostgreSQL, MongoDB)</li>
-<li>Spring (spring-web-mvc, spring-data-jpa, spring-security)</li>
-<li>JPA (Hibernate, spring-data-jpa)</li>
-<li>Web (GWT, HTML, CSS, JavaScript)</li>
-<li>Docker</li>
-<li>LWJGL</li>
-<li>Linux (Bash, Ubuntu)</li>
-<li>Android</li>
-<li>Python</li>
-</ul>
+<!--/* Ad4Game Interstitial or Floating DHTML Tag */-->
 
-<h2>External Experience <a href="#external_experience" id="external_experience" class="anchor">¶</a></h2>
-<ul>
-<li>Two interships at the <a href="https://www.uni-muenster.de/" target="_blank">WWU (university)</a>, particle physics</li>
-<li>Participation in a state-wide informatics project (contact me for details)</li>
-<li>German (native), English (fluent), French (DELF A2)</li>
-</ul>
+<script type="text/javascript"><!--//<![CDATA[
+   var ox_u = '//ads.ad4game.com/www/delivery/al.php?zoneid=51038&amp;layerstyle=footer&amp;position=bottom&amp;speed=3&amp;slide=0&amp;delay=-&amp;transparent=0';
+   if (document.context) ox_u += '&context=' + escape(document.context);
+   document.write("<scr"+"ipt type='text/javascript' src='" + ox_u + "'></scr"+"ipt>");
+//]]>--></script><script type="text/javascript" src="//ads.ad4game.com/www/delivery/al.php?zoneid=51038&amp;layerstyle=footer&amp;position=bottom&amp;speed=3&amp;slide=0&amp;delay=-&amp;transparent=0"></script>
 
-<h2>Projects <a href="#projects" id="projects" class="anchor">¶</a></h2>
-<p>Check out my <a href="https://github.com/yawkat" target="_blank">GitHub</a> for minor projects.</p>
-<ol class="block-list">
-<li>
-    <h4>Bluestart <a href="#bluestart" id="bluestart" class="anchor">¶</a> <span class="project-time">2015</span></h4>
-    <p>Unreleased project developed on contract for <a href="http://phanaticmc.com/" target="_blank">PhanaticMC</a></p>
-    <ul>
-        <li>Java</li>
-        <li>Spring, Spring MVC (spring-web, spring-security, spring-data-jpa)</li>
-        <li>GWT</li>
-        <li>REST</li>
-        <li>HTML / CSS</li>
-        <li>Docker</li>
-    </ul>
-</li>
-<li>
-    <h4>Saikban <a href="#saikban" id="saikban" class="anchor">¶</a> <span class="project-time">2015</span></h4>
-    <p>Minecraft ban manager with web interface, developed on contract for <a href="http://phanaticmc.com/" target="_blank">PhanaticMC</a></p>
-    <ul>
-        <li>Java</li>
-        <li>BungeeCord</li>
-        <li>Spring, Spring MVC (spring-web, spring-security)</li>
-        <li>SQL with Hibernate (JPA)</li>
-        <li>handlebars.java</li>
-        <li>HTML / CSS / JavaScript / Bootstrap</li>
-    </ul>
-</li>
-<li>
-    <h4><a href="http://www.spigotmc.org/resources/cricket.3069/">Cricket</a> <a href="#cricket" id="cricket" class="anchor">¶</a> <span class="project-time">2014 - 2015</span></h4>
-    <p>Minecraft ticketing system with web interface, developed on contract for <a href="http://phanaticmc.com/" target="_blank">PhanaticMC</a></p>
-    <ul>
-        <li>Java</li>
-        <li>Bukkit / Spigot</li>
-        <li>SQL</li>
-        <li>handlebars.java</li>
-        <li>HTML / CSS / JavaScript / Bootstrap</li>
-    </ul>
-</li>
-<li>
-    <h4>MCStrike <a href="#mcstrike" id="mcstrike" class="anchor">¶</a> <span class="project-time">2012 - 2014</span></h4>
-    <p>Minecraft minigame server</p>
-    <ul>
-        <li>Java</li>
-        <li>Minecraft server code</li>
-        <li>Bukkit / Spigot</li>
-        <li>ProtocolLib</li>
-        <li>BungeeCord, including multi-machine bungee installations and <a href="https://github.com/SpigotMC/BungeeCord/commits?author=yawkat">numerous contributions</a></li>
-        <li>Netty</li>
-        <li>MongoDB</li>
-        <li>Bash (for server management)</li>
-        <li>Python (for server management)</li>
-    </ul>
-</li>
-<li>
-    <h4>jClient <a href="#jclient" id="jclient" class="anchor">¶</a> <span class="project-time">2011 - 2013</span></h4>
-    <p>A minecraft mod</p>
-    <ul>
-        <li>Java</li>
-        <li>Minecraft client code</li>
-        <li>GL (via LWJGL)</li>
-    </ul>
-</li>
-</ol>
 
 
 </body></html>
